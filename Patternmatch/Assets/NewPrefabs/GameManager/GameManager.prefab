@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6072508506858315558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6072508506858315557}
+  - component: {fileID: 6072508506858315559}
+  - component: {fileID: 6072508506858315556}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6072508506858315557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072508506858315558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 828.00684, y: 46.393494, z: 7.332489}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6072508506858315559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072508506858315558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9693ed186af3b4989af733599305c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelIdentity: 0
+  nextSceneSkipTime: 5
+  pathOnAction: 0
+  passiveMoveSpeed: 0
+  camerafollow: 0
+  isMoving: 0
+  levelFinished: 0
+  roadSpeed: 38
+  enemyFireDistance: 60
+  enemyFireRateIn1Min: 10
+--- !u!114 &6072508506858315556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6072508506858315558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c674f1eabf2089f418d951542d9358ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBoundary: {fileID: 0}
+  rightBoundary: {fileID: 0}
+  backBoundary: {fileID: 0}
+  frontBoundary: {fileID: 0}
+  Working: 1
+  horizontalEquivalent: 120
+  verticalEquivalent: 122
+  forsakenAxisDefault: 0
+  keepPlayersExtraAxis: 1
+  player: {fileID: 0}
+  mover: {fileID: 0}
+  visual: {fileID: 0}
+  UI:
+  - {fileID: 0}
+  useAccurateLimiting: 0
+  horizontalWorldLimitation: 0
+  hWorldMinMax:
+  - -25
+  - 60
+  verticalWorldLimitation: 0
+  vWorldMinMax:
+  - 9
+  - 110
+  underLimitingMaxPossibleScale: 10
+  extraSimplifyNodes: 0
+  simplifyingPower: 10
+  useNodeLimit: 1
+  nodeLimit: 10000
+  nodeDownLimit: 0
+  desiredMinimumDifferance: 1
+  scaleFactor: 3.5
+  maxHorizontalResult: 30
+  maxVerticalResult: 50
+  preserveDrawingShape: 1
+  visualTopLimitScreenPercentage: 50
+  visualBottomLimitScreenPercentage: 2
+  rVisualSideLimitScreenPercentage: 95
+  lVisualSideLimitScreenPercentage: 5
+  useFixedRatio: 1
+  x_y_Ratio: 1400000014000000
+  updateVisual: 0
+  pointerObject: {fileID: 0}
+  parent: {fileID: 0}
