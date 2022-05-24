@@ -69,8 +69,8 @@ public class PlayerCollision : MonoBehaviour
 
 
 
-        LevelSystem.Instance.DidYouReturnPanel = false;
-        LevelSystem.Instance.DidYouNextLevelPanel = false;
+       // LevelSystem.Instance.DidYouReturnPanel = false;
+       // LevelSystem.Instance.DidYouNextLevelPanel = false;
 
     }
 
