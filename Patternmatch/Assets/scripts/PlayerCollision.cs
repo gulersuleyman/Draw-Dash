@@ -109,7 +109,7 @@ public class PlayerCollision : MonoBehaviour
 
     void EndGame()
     {
-        LevelSystem.Instance.DidYouReturnPanel = true;
+       // LevelSystem.Instance.DidYouReturnPanel = true;
     }
 
     IEnumerator OnDeath()
@@ -194,7 +194,7 @@ public class PlayerCollision : MonoBehaviour
             enemy.isDeath = true;
             enemy.healthBar.gameObject.SetActive(false);
             enemy.deathWithSword = true;
-
+            
             _playerController._enemyCount--;
 
             if (flamed)

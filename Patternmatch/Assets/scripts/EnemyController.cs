@@ -55,6 +55,7 @@ public class EnemyController : MonoBehaviour
 
         transform.LookAt(_playerController.transform.position);
         transform.localEulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        MoveEnemy();
     }
 
     
@@ -109,6 +110,7 @@ public class EnemyController : MonoBehaviour
     
     public void MoveEnemy()  
     {
+        _enemyAnimationController.ShotAnimation(true);
         if(_events.isMoving)
         {
             if(!targetOne)
