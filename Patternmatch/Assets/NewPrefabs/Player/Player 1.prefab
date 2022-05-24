@@ -3905,6 +3905,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isNear: 0
   ListOfPointLists:
     list: []
 --- !u!1 &6140381206244185159
@@ -4644,6 +4645,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  isNear: 0
   ListOfPointLists:
     list:
     - go: {fileID: 0}
@@ -4867,7 +4869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28d665950483c245a4e8205bb47c9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lazerSpawnTime: 1
+  lazerSpawnTime: 5
   lazer: {fileID: 5888550403075343475, guid: 745be8cb2b1799840b98d13eac713381, type: 3}
 --- !u!1 &6140381207818472916
 GameObject:
