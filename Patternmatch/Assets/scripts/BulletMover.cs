@@ -17,7 +17,7 @@ public class BulletMover : MonoBehaviour
     {
         _playerCollision = FindObjectOfType<PlayerCollision>();
         _playerController = FindObjectOfType<PlayerController>();
-        _target = FindObjectOfType<GunTargetPosition>().transform;
+      //  _target = FindObjectOfType<GunTargetPosition>().transform;
         explosionParticle.SetActive(false);
         Fire();
     }
@@ -26,11 +26,11 @@ public class BulletMover : MonoBehaviour
     {
 
 
-        transform.DOMove(_target.position,0.6f).OnComplete(() =>
+      /*  transform.DOMove(_target.position,0.6f).OnComplete(() =>
         {
            
             Invoke("ActiveFalse", 0.05f);
-        });
+        });*/
 
 
 
@@ -41,7 +41,7 @@ public class BulletMover : MonoBehaviour
         this.gameObject.SetActive(false);
     }
     
-    private void OnTriggerEnter(Collider other)
+   /* private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -95,7 +95,7 @@ public class BulletMover : MonoBehaviour
                     }
                
         }
-    }
+    }*/
 
 
 

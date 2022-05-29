@@ -220,6 +220,11 @@ public class PlayerCollision : MonoBehaviour
             collision.gameObject.GetComponent<MinyonController>().EnableParticle();
 
             MinyonController enemy = collision.gameObject.GetComponent<MinyonController>();
+            GameObject[] armors = enemy.armors;
+			foreach (var armor in armors)
+			{
+                armor.gameObject.SetActive(false);
+			}
             enemy.isDeath = true;
             
             enemy.deathWithSword = true;

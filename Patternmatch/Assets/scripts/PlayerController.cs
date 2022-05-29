@@ -30,11 +30,11 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         _gunTarget = FindObjectOfType<GunTargetPosition>();
-        _boneRenderer = GetComponentInChildren<BoneRenderer>();
-        _rigBuilder = GetComponentInChildren<RigBuilder>();
+       // _boneRenderer = GetComponentInChildren<BoneRenderer>();
+       // _rigBuilder = GetComponentInChildren<RigBuilder>();
         _animationController = GetComponent<AnimationController>();
 
-        _enemyCount = _gunTarget._enemies.Length;
+        //_enemyCount = _gunTarget._enemies.Length;
         _mover = GetComponent<stopListMover>();
         
     }
@@ -60,8 +60,8 @@ public class PlayerController : MonoBehaviour
 
     void MoveToFinish()
     {
-        _boneRenderer.enabled = false;
-        _rigBuilder.enabled = false;
+       // _boneRenderer.enabled = false;
+        //_rigBuilder.enabled = false;
         _animationController.FinalRunAnimation(true);
         transform.LookAt(finishTarget);
         transform.DOMove(finishTarget.position, 2f).SetEase(Ease.Linear).OnComplete(() =>
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         
         cameraFollowTarget.gameObject.transform.parent = null;
     }
-    public void DisableBone()
+   /* public void DisableBone()
     {
         _boneRenderer.enabled = false;
         _rigBuilder.enabled = false;
@@ -94,6 +94,6 @@ public class PlayerController : MonoBehaviour
     {
         _boneRenderer.enabled = true;
         _rigBuilder.enabled = true;
-    }
+    }*/
 }
  

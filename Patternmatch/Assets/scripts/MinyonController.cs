@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 public class MinyonController : MonoBehaviour
 {
+    public GameObject[] armors;
     [SerializeField] GameObject freezeParticle;
     [SerializeField] GameObject deathParticle;
     [SerializeField] GameObject deathParticle2;

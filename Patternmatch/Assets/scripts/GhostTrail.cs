@@ -16,7 +16,7 @@ public class GhostTrail : MonoBehaviour
 
     private void Start()
     {
-        GhostPrefab.GetComponentInChildren<Renderer>().material = materials[materialIndex];
+       // GhostPrefab.GetComponentInChildren<Renderer>().material = materials[materialIndex];
     }
 
     // Update is called once per frame
