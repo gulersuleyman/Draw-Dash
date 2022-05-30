@@ -5,6 +5,7 @@ using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject epicWin;
     [SerializeField] GameObject enemyParent;
     [SerializeField] GameObject continueCanvas;
     [SerializeField] bool useParasut;
@@ -65,14 +66,19 @@ public class PlayerController : MonoBehaviour
 
     void MoveToFinish()
     {
-       // _boneRenderer.enabled = false;
+        float door1x = _door.doorLeft.gameObject.transform.localPosition.x;
+        float door2x = _door.doorRight.gameObject.transform.localPosition.x;
+        // _boneRenderer.enabled = false;
         //_rigBuilder.enabled = false;
         _animationController.FinalRunAnimation(true);
         transform.LookAt(finishTarget);
         transform.DOMove(finishTarget.position, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            
-            if(useParasut)
+            epicWin.gameObject.SetActive(true);
+            _door.doorRight.gameObject.transform.DOMove(new Vector3(door2x, _door.doorRight.gameObject.transform.position.y, _door.doorRight.gameObject.transform.position.z), 0.5f);
+            _door.doorLeft.gameObject.transform.DOMove(new Vector3(door1x, _door.doorLeft.gameObject.transform.position.y, _door.doorLeft.gameObject.transform.position.z), 0.5f);
+
+            if (useParasut)
             {
                 parasut.gameObject.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
                 _animationController.FlyAnimation(true);
@@ -86,8 +92,10 @@ public class PlayerController : MonoBehaviour
                 if (useParasut)
                     transform.DOScale(Vector3.zero, 3f);
             });
+            
         });
-        _door.doorLeft.gameObject.transform.DOMoveX(0.18f, 0.5f);
+        
+        _door.doorLeft.gameObject.transform.DOMoveX(_door.doorLeft.gameObject.transform.localPosition.x + 0.12f, 0.5f);
         _door.doorRight.gameObject.transform.DOMoveX(_door.doorRight.gameObject.transform.localPosition.x - 0.12f, 0.5f);
         cameraFollowTarget.gameObject.transform.parent = null;
     }
