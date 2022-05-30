@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-
+    Doors _door;
     GunTargetPosition _gunTarget;
     AnimationController _animationController;
     BoneRenderer _boneRenderer;
@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _door = FindObjectOfType<Doors>();
         _gunTarget = FindObjectOfType<GunTargetPosition>();
        // _boneRenderer = GetComponentInChildren<BoneRenderer>();
        // _rigBuilder = GetComponentInChildren<RigBuilder>();
@@ -51,8 +52,9 @@ public class PlayerController : MonoBehaviour
             levelFinished = true;
             GameManager.Instance.levelFinished = true;
             Invoke("MoveToFinish", 0.8f);
+           // _door.doorLeft.gameObject.transform.DOMoveX(0.18f,0.5f);
+            //_door.doorRight.gameObject.transform.DOMoveX(_door.doorRight.gameObject.transform.localPosition.x - 0.12f, 0.5f);
 
-            
         }
 
     }
@@ -82,7 +84,8 @@ public class PlayerController : MonoBehaviour
                     transform.DOScale(Vector3.zero, 3f);
             });
         });
-        
+        _door.doorLeft.gameObject.transform.DOMoveX(0.18f, 0.5f);
+        _door.doorRight.gameObject.transform.DOMoveX(_door.doorRight.gameObject.transform.localPosition.x - 0.12f, 0.5f);
         cameraFollowTarget.gameObject.transform.parent = null;
     }
    /* public void DisableBone()

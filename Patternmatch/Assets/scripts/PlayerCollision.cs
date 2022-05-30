@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using DG.Tweening;
 using Cinemachine;
 public class PlayerCollision : MonoBehaviour
@@ -221,6 +222,7 @@ public class PlayerCollision : MonoBehaviour
 
             MinyonController enemy = collision.gameObject.GetComponent<MinyonController>();
             GameObject[] armors = enemy.armors;
+            collision.gameObject.GetComponent<NavMeshAgent>().enabled = false;
 			foreach (var armor in armors)
 			{
                 armor.gameObject.SetActive(false);
@@ -245,6 +247,8 @@ public class PlayerCollision : MonoBehaviour
             collision.gameObject.GetComponent<CapsuleCollider>().enabled = false;
             collision.gameObject.GetComponentInChildren<Animator>().enabled = false;
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
+            collision.gameObject.GetComponent<MinyonController>().isNear = false;
+            collision.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         }
         if (collision.gameObject.CompareTag("Boss"))
         {

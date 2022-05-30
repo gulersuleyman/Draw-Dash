@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using DG.Tweening;
 public class MinyonController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MinyonController : MonoBehaviour
     public bool deathWithSword = false;
     public bool isNear = false;
 
+    
 
     PlayerCollision _playerCollision;
     PlayerController _playerController;
@@ -21,13 +23,13 @@ public class MinyonController : MonoBehaviour
     Rigidbody _rigidbody;
     EnemyAnimationController _enemyAnimationController;
     SkinnedMeshRenderer _mesh;
-    
+    NavMeshAgent _agent;
 
     void Awake()
     {
         _mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         _playerCollision = FindObjectOfType<PlayerCollision>();
-        
+        _agent = GetComponent<NavMeshAgent>();
         _enemyAnimationController = GetComponent<EnemyAnimationController>();
         _playerController = FindObjectOfType<PlayerController>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
@@ -40,16 +42,28 @@ public class MinyonController : MonoBehaviour
         
 
     }
-   
 
-    private void OnTriggerEnter(Collider other)
+
+	private void Update()
+	{
+		if(isNear)
+		{
+            _agent.destination = _playerController.gameObject.transform.position;
+        }
+	}
+
+	private void OnTriggerEnter(Collider other)
     {
 
         
         if (other.gameObject.CompareTag("EnemyMover"))
         {
             if (!_playerCollision.freezed)
+			{
                 MoveToPlayer();
+                
+            }
+                
         }
         if(other.gameObject.CompareTag("Stone"))
         {
