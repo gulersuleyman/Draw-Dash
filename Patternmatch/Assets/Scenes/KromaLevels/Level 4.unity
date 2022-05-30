@@ -7736,7 +7736,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.4310839, y: -0.0000032075795, z: 0.0000015324367, w: 0.90231186}
+  m_LocalRotation: {x: 0.4310839, y: -0.0000032386306, z: 0.0000015472714, w: 0.90231186}
   m_LocalPosition: {x: -8.148571, y: 86.882195, z: -55.626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17097,7 +17097,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 4038c01dca0fd8b429851dc7307231c3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c2b0837f593e7e54bb80a48d3985297e, type: 2}
 --- !u!4 &2042171602
 Transform:
   m_ObjectHideFlags: 0
@@ -18285,12 +18285,12 @@ PrefabInstance:
     - target: {fileID: 1063017590893141601, guid: 0155e512c9fdd2b4aadaa3f0c6cbc952,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000032075795
+      value: -0.0000032386306
       objectReference: {fileID: 0}
     - target: {fileID: 1063017590893141601, guid: 0155e512c9fdd2b4aadaa3f0c6cbc952,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000015324367
+      value: 0.0000015472714
       objectReference: {fileID: 0}
     - target: {fileID: 1063017590893141601, guid: 0155e512c9fdd2b4aadaa3f0c6cbc952,
         type: 3}
