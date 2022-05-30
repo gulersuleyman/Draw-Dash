@@ -7,7 +7,7 @@ using DG.Tweening;
 using Cinemachine;
 public class PlayerCollision : MonoBehaviour
 {
-
+    [SerializeField] GameObject restartCanvas;
     [SerializeField] GameObject pointer;
     [SerializeField] GameObject hitParticle;
     [SerializeField] GameObject wallHitParticle;
@@ -129,6 +129,8 @@ public class PlayerCollision : MonoBehaviour
             deathImage.transform.parent.gameObject.SetActive(false);
             deathImage.gameObject.SetActive(false);
             isDeath = true;
+            //GameManager.Instance.ReloadScene();
+            restartCanvas.gameObject.SetActive(true);
         }
         else
         {

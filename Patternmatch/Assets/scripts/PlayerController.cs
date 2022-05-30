@@ -5,6 +5,8 @@ using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameObject enemyParent;
+    [SerializeField] GameObject continueCanvas;
     [SerializeField] bool useParasut;
 
 
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _enemyCount = enemyParent.transform.childCount;
         _door = FindObjectOfType<Doors>();
         _gunTarget = FindObjectOfType<GunTargetPosition>();
        // _boneRenderer = GetComponentInChildren<BoneRenderer>();
@@ -68,13 +71,13 @@ public class PlayerController : MonoBehaviour
         transform.LookAt(finishTarget);
         transform.DOMove(finishTarget.position, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            LevelSystem.Instance.DidYouNextLevelPanel = true;
+            
             if(useParasut)
             {
                 parasut.gameObject.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
                 _animationController.FlyAnimation(true);
             }
-            
+            continueCanvas.gameObject.SetActive(true);
             // transform.LookAt(finishTarget2);
             _animationController.FinalRunAnimation(false);
             _animationController.AttackAnimation(false);
