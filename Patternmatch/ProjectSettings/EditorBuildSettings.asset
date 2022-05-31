@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/KromaLevels/Level 0.unity
+    guid: afd6f97dc4c784146a248724d4f09585
+  - enabled: 1
     path: Assets/Scenes/KromaLevels/Level 1.unity
     guid: 57f38356c441da241aead2361d652b64
   - enabled: 1

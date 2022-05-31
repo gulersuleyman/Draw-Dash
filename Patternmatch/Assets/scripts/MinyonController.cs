@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using DG.Tweening;
 public class MinyonController : MonoBehaviour
 {
+    public bool isTutorial;
     public GameObject[] armors;
     [SerializeField] GameObject freezeParticle;
     [SerializeField] GameObject deathParticle;
@@ -58,8 +59,9 @@ public class MinyonController : MonoBehaviour
         
         if (other.gameObject.CompareTag("EnemyMover"))
         {
-            if (!_playerCollision.freezed)
+            if (!_playerCollision.freezed && !isTutorial)
 			{
+
                 MoveToPlayer();
                 
             }

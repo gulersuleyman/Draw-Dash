@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Animations.Rigging;
 using DG.Tweening;
 public class PlayerController : MonoBehaviour
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public bool levelFinished=false;
 
 
-
+    NavMeshAgent _agent;
     Doors _door;
     GunTargetPosition _gunTarget;
     AnimationController _animationController;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _agent = GetComponent<NavMeshAgent>();
         _enemyCount = enemyParent.transform.childCount;
         _door = FindObjectOfType<Doors>();
         _gunTarget = FindObjectOfType<GunTargetPosition>();
@@ -72,26 +74,22 @@ public class PlayerController : MonoBehaviour
         //_rigBuilder.enabled = false;
         _animationController.FinalRunAnimation(true);
         transform.LookAt(finishTarget);
-        transform.DOMove(finishTarget.position, 2f).SetEase(Ease.Linear).OnComplete(() =>
+        transform.DOMove(transform.position+new Vector3(0.01f,0.01f,0.01f), 0.1f).SetEase(Ease.Linear).OnComplete(() =>
         {
             epicWin.gameObject.SetActive(true);
             _door.doorRight.gameObject.transform.DOMove(new Vector3(door2x, _door.doorRight.gameObject.transform.position.y, _door.doorRight.gameObject.transform.position.z), 0.5f);
             _door.doorLeft.gameObject.transform.DOMove(new Vector3(door1x, _door.doorLeft.gameObject.transform.position.y, _door.doorLeft.gameObject.transform.position.z), 0.5f);
 
-            if (useParasut)
-            {
-                parasut.gameObject.GetComponent<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 0);
-                _animationController.FlyAnimation(true);
-            }
+            
             continueCanvas.gameObject.SetActive(true);
             // transform.LookAt(finishTarget2);
             _animationController.FinalRunAnimation(false);
             _animationController.AttackAnimation(false);
-            transform.DOMove(finishTarget2.position, 7f).OnComplete(()=>
-            {
-                if (useParasut)
-                    transform.DOScale(Vector3.zero, 3f);
-            });
+            _animationController.FinalRunAnimation(true);
+            //transform.DOMove(finishTarget2.position, 7f);
+            _agent.speed = 20f;
+            _agent.destination = finishTarget.position;
+
             
         });
         
