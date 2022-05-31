@@ -220,6 +220,9 @@ public class PlayerCollision : MonoBehaviour
         }
         if(collision.gameObject.CompareTag("Minyon"))
         {
+            iOSHapticFeedback.Instance.Trigger(iOSHapticFeedback.iOSFeedbackType.ImpactMedium);
+
+
             collision.gameObject.GetComponent<MinyonController>().EnableParticle();
 
             MinyonController enemy = collision.gameObject.GetComponent<MinyonController>();
