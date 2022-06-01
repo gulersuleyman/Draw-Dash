@@ -6,7 +6,7 @@ using DG.Tweening;
 using Cinemachine;
 public class stopListMover : MonoBehaviour
 {
-    
+    [SerializeField] GameObject waitDamage;
 
     [SerializeField] Transform center;
     
@@ -123,7 +123,7 @@ public class stopListMover : MonoBehaviour
             
             Vector3 target = new Vector3(transform.position.x,transform.position.y,returnCenterZ);
             transform.position = Vector3.MoveTowards(transform.position, target, returnSpeed * Time.deltaTime);
-            
+            StartCoroutine(waitDamageActive());
         }
         else 
         {
@@ -365,5 +365,10 @@ public class stopListMover : MonoBehaviour
 
     }
 
-
+    IEnumerator waitDamageActive()
+	{
+        waitDamage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        waitDamage.gameObject.SetActive(false);
+	}
 }

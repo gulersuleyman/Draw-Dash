@@ -23,12 +23,12 @@ public class MinyonController : MonoBehaviour
     Animator _animator;
     Rigidbody _rigidbody;
     EnemyAnimationController _enemyAnimationController;
-    SkinnedMeshRenderer _mesh;
+    public SkinnedMeshRenderer[] _mesh;
     NavMeshAgent _agent;
 
     void Awake()
     {
-        _mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        _mesh = GetComponentsInChildren<SkinnedMeshRenderer>();
         _playerCollision = FindObjectOfType<PlayerCollision>();
         _agent = GetComponent<NavMeshAgent>();
         _enemyAnimationController = GetComponent<EnemyAnimationController>();
@@ -83,7 +83,11 @@ public class MinyonController : MonoBehaviour
             _playerController._enemyCount--;
             _capsuleCollider.enabled = false;
             _animator.enabled = false;
-            _mesh.enabled = false;
+			foreach (var mesh in _mesh)
+			{
+                mesh.enabled = false;
+            }
+            
             Instantiate(deathParticle, other.gameObject.transform.position, Quaternion.identity);
             Instantiate(deathParticle2, other.gameObject.transform.position, Quaternion.identity);
             isDeath = true;
@@ -99,7 +103,7 @@ public class MinyonController : MonoBehaviour
     {
         isDeath = true;
         _playerController._enemyCount--;
-        _mesh.enabled = false;
+        //_mesh.enabled = false;
         Instantiate(deathParticle, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
         Instantiate(deathParticle2, other.gameObject.transform.position, Quaternion.identity);
 

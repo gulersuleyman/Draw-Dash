@@ -254,6 +254,11 @@ public class PlayerCollision : MonoBehaviour
             collision.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             collision.gameObject.GetComponent<MinyonController>().isNear = false;
             collision.gameObject.GetComponent<NavMeshAgent>().enabled = false;
+            //SkinnedMeshRenderer[] meshes = collision.gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+			foreach (var mesh in collision.gameObject.GetComponent<MinyonController>()._mesh)
+			{
+                mesh.enabled = false;
+			}
         }
         if (collision.gameObject.CompareTag("Boss"))
         {

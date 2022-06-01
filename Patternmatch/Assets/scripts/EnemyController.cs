@@ -38,12 +38,12 @@ public class EnemyController : MonoBehaviour
     ragdoll1 _ragdoll;
     EnemyEvents _events;
     EnemyAnimationController _enemyAnimationController;
-    SkinnedMeshRenderer _mesh;
+    SkinnedMeshRenderer[] _mesh;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        _mesh = GetComponentsInChildren<SkinnedMeshRenderer>();
         _playerCollision = FindObjectOfType<PlayerCollision>();
         _events = GetComponentInChildren<EnemyEvents>();
         _enemyAnimationController = GetComponent<EnemyAnimationController>();
@@ -98,7 +98,11 @@ public class EnemyController : MonoBehaviour
     public void KillFreezedEnemy(GameObject other)
     {
         _playerController._enemyCount--;
-        _mesh.enabled = false;
+		foreach (var mesh in _mesh)
+		{
+            mesh.enabled = false;
+        }
+        
         _capsuleCollider.enabled = false;
         isDeath = true;
         _gun.gameObject.transform.parent = null;

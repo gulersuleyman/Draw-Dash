@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ElephantSDK;
+using GameAnalyticsSDK;
 
 public class GameManager : MonoBehaviour
 {
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        GameAnalytics.Initialize();
 
         if (_instance != null && _instance != this)
         {
@@ -60,6 +63,8 @@ public class GameManager : MonoBehaviour
     {
         levelIdentity = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("lastLevel",levelIdentity);
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, PlayerPrefs.GetInt("level").ToString());
+        Elephant.LevelStarted(PlayerPrefs.GetInt("level"));
     }
 
     public bool getPathActive()
@@ -75,10 +80,14 @@ public class GameManager : MonoBehaviour
 
     public void ReloadScene()
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, PlayerPrefs.GetInt("level").ToString());
+        Elephant.LevelFailed(PlayerPrefs.GetInt("level"));
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void LoadNextLevel()
     {
+        Elephant.LevelCompleted(PlayerPrefs.GetInt("level"));
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, PlayerPrefs.GetInt("level").ToString());
         levelIdentity += 1;
         if (levelIdentity == (SceneManager.sceneCountInBuildSettings))
         {
